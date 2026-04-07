@@ -1,33 +1,35 @@
 inventario = [
-    ["Croquetas", 10, 20, 0],
-    ["Champú", 12, 5, 0],
-    ["Collar LED", 15, 20, 0]
+    ["Croquetas", 15, 20, 0],
+    ["Juguete", 10, 5, 0],
+    ["Champu", 5, 12, 0]
 ]
 
-def calcular_valor_fila(fila):
-    """Motor de Cálculos: Multiplica Stock * Precio."""
+def valor_total(fila):
     return fila[1] * fila[2]
 
 def mostrar_resumen_final():
-    valor_total_acumulado = 0
-    print("\n" + "="*45)
-    print("      RESUMEN DE INVENTARIO 'HUELLITAS'")
-    print("="*45)
+    total_acumulado = 0
+    print("\n" + "*"*45)
+    print("      RESUMEN INVENTARIO 'HUELLITAS'")
+    print("*"*45)
     
     for i in range(len(inventario)):
-        subtotal = calcular_valor_fila(inventario[i])
+        subtotal = valor_total(inventario[i])
         inventario[i][3] = subtotal
-        valor_total_acumulado += subtotal
+        total_acumulado += subtotal
         
         print(f"Producto: {inventario[i][0]:<12} | Valor Estante: Q{subtotal}")
     
-    print("-" * 45)
-    print(f"VALOR TOTAL DEL INVENTARIO: Q{valor_total_acumulado}")
-    print("="*45)
+    print("*" * 45)
+    print(f"VALOR TOTAL INVENTARIO: Q{total_acumulado}")
+    print("*"*45)
 
-# --- PANEL DE CONTROL ---
+print ("Prodcutos disponibles.")
+for i in range(len(inventario)):
+    print(f"Producto: {inventario[i][0]:<12} | Stock: {inventario[i][1]:<12} | Precio: Q{inventario[i][2]:<12}")
+
 while True:
-    print("\n--- MENÚ PRINCIPAL ---")
+    print("\n MENÚ PRINCIPAL ")
     print("1. Vender | 2. Agregar | 3. Eliminar | 4. Salir e Imprimir Resumen")
     opcion = input("Seleccione una opción: ")
 
@@ -35,9 +37,9 @@ while True:
         nombre = input("Nombre del producto: ")
         for p in inventario:
             if p[0].lower() == nombre.lower():
-                cant = int(input(f"Cantidad de {p[0]} a vender: "))
-                if cant <= p[1]:
-                    p[1] -= cant
+                cantidad = int(input(f"cantidad de {p[0]} a vender: "))
+                if cantidad <= p[1]:
+                    p[1] -= cantidad
                     print("¡Venta exitosa!")
                 else:
                     print(f"Error: Solo hay {p[1]} unidades.")
@@ -60,5 +62,5 @@ while True:
 
     elif opcion == "4":
         mostrar_resumen_final()
-        print("\nCerrando sistema... ¡Éxito en tu examen!")
+        print("\nCerrando sistema...")
         break

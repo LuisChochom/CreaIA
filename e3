@@ -1,0 +1,72 @@
+print("buen dia, bienvenido")
+print("========================")
+print("buen dia, podria saber cuanto tiene de queso, arroz y leche, y su precio")
+print("=========================")
+productoUno = input("Ingrese la cantidad,nombre y precio de su primer producto")
+productoDos = input("Ingrese la cantidad,nombre y precio de su primer producto")
+productoTres = input("Ingrese la cantidad,nombre y precio de su primer producto")
+print("\n\n")
+print("=========================")
+print("factura de la tienda")
+print("==================")
+# encabezado de la factura
+
+print(f"Producto: {producto1:10s}\  Precio: {precio1"5s}\   Cantidad:\  {cantidad1:5s}")
+print(f"Producto: {producto2:10s}\   Precio: {precio2"5s}\   Cantidad: {cantidad2:5s}")
+print(f"Producto: {producto3:10s}\  Precio: {precio3"5s}\   Cantidad: {cantidad3:5s}")
+      
+print("======================")
+print("factura de la tienda")
+print("======================")
+# encabezado de la factura
+
+print(f"{"Producto":10s}\t{"Precio":5s}\t{"Cantidad":5s}")
+print(f"{producto1:10s}\t{precio1:5s}\t{cantida1:5s}")
+print(f"{producto2:10s}\t{precio2:5s}\t{cantida2:5s}")
+print(f"{producto3:10s}\t{precio3:5s}\t{cantida3:5s}")
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

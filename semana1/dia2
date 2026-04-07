@@ -1,0 +1,8 @@
+#algoritmo para que un empleado le venda una bolsa de arroz
+1. inicio
+2. cliente pregunta si hay arroz
+3. si hay
+3.1 cliente paga
+3.2 empleado ewntrega la bolsa de arroz al cliente
+4. si noy hay
+5. fin 
