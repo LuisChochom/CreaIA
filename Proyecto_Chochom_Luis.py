@@ -28,8 +28,10 @@ def nombre_producto(codigo):
         return "Fertilizante"
     elif codigo == 2:
         return "Insecticida"
-    else:
+    elif codigo == 3:
         return "Herbicida"
+    else:
+        return "Desconocido"
 
 
 # Listas para acumular datos indice: 0. Fertilizante 1. Insecticida 2. Herbicida
@@ -93,7 +95,7 @@ else:
     promedio_general = 0
 
 
-print()
-print(f"Producto mayor cantidades: {nombre_producto(prod_max_unidades)}")
+
+print(f"\nProducto mayor cantidades: {nombre_producto(prod_max_unidades)}")
 print(f"Producto con mas lotes: {nombre_producto(prod_max_lotes)}")
 print(f"Promedio de productos producidos: {promedio_general:.2f}")
