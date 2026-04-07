@@ -29,3 +29,5 @@ def mostrar_catalogo_disponible():
         print(f"[{clave}] {datos['nombre']} | Tipo: {datos['tipo']} | HP: {datos['hp_maximo']} | EP: {datos['energia_maxima']}")
     
     print("="*45 + "\n")
+
+mostrar_catalogo_disponible()
