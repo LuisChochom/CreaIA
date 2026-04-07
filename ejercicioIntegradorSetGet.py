@@ -1,8 +1,8 @@
 class RegistroAcademico:
     def __init__(self, nombre_alumno, nota_inicial):
-        self.nombre = nombre_alumno
-        self.__nota = nota_inicial
-        self.cuenta_activa = True
+        self.nombre = nombre_alumno #publico
+        self.__nota = nota_inicial #privado
+        self.cuenta_activa = True # atributo para controlar el estado de la cuenta (activa o bloqueada)
     
     def get_nota(self):
         return self.__nota
@@ -17,13 +17,14 @@ class RegistroAcademico:
 
     def bloquear_cuenta(self):
         self.cuenta_activa = False
+        print("----------------------------------------------")
         print(f"La cuenta de {self.nombre} ha sido bloqueada.")
 
 alumna = RegistroAcademico("Laura", 85)
 intentos_permitidos = 3
 
 while intentos_permitidos > 0:
-    nueva_nota = float(input(f"\nIntentos restantes ({intentos_permitidos}). Ingrese la nueva nota para {alumna.nombre}: "))
+    nueva_nota = float(input(f"Intentos restantes ({intentos_permitidos}). Ingrese la nueva nota para {alumna.nombre}: "))
     resultado = alumna.set_nota(nueva_nota)
 
     if resultado == 1:
