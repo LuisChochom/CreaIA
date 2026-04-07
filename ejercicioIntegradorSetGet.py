@@ -34,9 +34,9 @@ while intentos_permitidos > 0:
         intentos_permitidos -= 1
         print(f"Error: La nota debe estar entre 0 y 100. Te quedan {intentos_permitidos} intentos.")
 
-    if intentos_permitidos == 0:
-        alumna.bloquear_cuenta()
-        print("--- SISTEMA BLOQUEADO ---")
-        print(f"La cuenta de {alumna.nombre} ha sido bloqueada por demasiados intentos fallidos.")
+if intentos_permitidos == 0:
+    alumna.bloquear_cuenta()
+    print("--- SISTEMA BLOQUEADO ---")
+    print(f"La cuenta de {alumna.nombre} ha sido bloqueada por demasiados intentos fallidos.")
 
 
