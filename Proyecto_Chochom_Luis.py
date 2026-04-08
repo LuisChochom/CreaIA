@@ -37,7 +37,7 @@ lotes = [0, 0, 0]
 unidades = [0, 0, 0]
 
 while True:
-    dato = input()
+    dato = input("Ingrese el dato (Producto(1-3), Cantidad(000-999), Entregado(0 o 1)) o 'FIN' para terminar: ")
     #Esta linea de codigo es para convertir el fin de minuscula a mayuscula, para que el programa pueda reconocerlo y finalizar la entrada de datos
     dato = dato.upper()
 
@@ -46,7 +46,7 @@ while True:
         break
 
     if not es_valido(dato):
-        print(f"dato invalido {dato}")
+        print(f"dato invalido {dato}", "Valide el numero de producto (1-3), cantidad (000-999) y entregado (0 o 1)")
         continue
 
     #Extraer producto y cantidad del dato ingresado

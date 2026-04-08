@@ -38,5 +38,3 @@ if intentos_permitidos == 0:
     alumna.bloquear_cuenta()
     print("--- SISTEMA BLOQUEADO ---")
     print(f"La cuenta de {alumna.nombre} ha sido bloqueada por demasiados intentos fallidos.")
-
-
