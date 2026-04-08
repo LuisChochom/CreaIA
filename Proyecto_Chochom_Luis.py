@@ -22,7 +22,6 @@ def obtener_categoria(promedio):
     else:
         return "Sobreproduccion"
 
-
 def nombre_producto(codigo):
     if codigo == 1:
         return "Fertilizante"
@@ -32,7 +31,6 @@ def nombre_producto(codigo):
         return "Herbicida"
     else:
         return "Desconocido"
-
 
 # Listas para acumular datos indice: 0. Fertilizante 1. Insecticida 2. Herbicida
 lotes = [0, 0, 0]
@@ -93,8 +91,6 @@ if total_lotes > 0:
     promedio_general = total_unidades / total_lotes
 else:
     promedio_general = 0
-
-
 
 print(f"\nProducto mayor cantidades: {nombre_producto(prod_max_unidades)}")
 print(f"Producto con mas lotes: {nombre_producto(prod_max_lotes)}")
