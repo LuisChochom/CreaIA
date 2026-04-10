@@ -36,14 +36,6 @@ lista_sensores = []
 
 print("MONITOREO INDUSTRIAL")
 print("Cargando datos de presión...")
-# print("-----------------------------------")
-# print("Creando archivo registros.txt con datos de ejemplo...")
-# with open("registros.txt", "w") as archivo_registros:
-#     archivo_registros.write("Caldera-Norte\n120\n")
-#     archivo_registros.write("Caldera-Sur\n250\n")
-#     archivo_registros.write("Reactor-Principal\n80\n")
-#     archivo_registros.write("Turbina-Alfa\n300\n")
-# print("-----------------------------------")
 
 # 1. Lectura del archivo registro.txt y creación de objetos SensorPresion
 # Se debe asegurar que registros.txt exista en la carpeta
