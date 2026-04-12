@@ -1,0 +1,5 @@
+REPORTE DE INCIDENCIAS - CALDERAS CRITICAS
+-------------------------------------------
+1. Caldera-Sur
+2. Turbina-Alfa
+3. Genesis
