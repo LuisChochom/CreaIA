@@ -41,7 +41,7 @@ print("Cargando datos de presión...")
 # Se debe asegurar que registros.txt exista en la carpeta
 with open("registros.txt", "r") as datos:
     #Se recorre el archivo registros.txt de dos en dos lineas, la primera es el nombre del sensor y la segunda es el valor de presión
-    for linea_nombre in datos:
+    for linea_nombre in datos: 
         #Con strip() se eliminan los espacios en blanco al inicio y al final de la linea.
         nombre = linea_nombre.strip()
         

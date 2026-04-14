@@ -30,4 +30,3 @@ def mostrar_catalogo_disponible():
     
     print("="*45 + "\n")
 
-mostrar_catalogo_disponible()
