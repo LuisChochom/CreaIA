@@ -3,7 +3,7 @@ from pokedex import CATALOGO_POKEMON, mostrar_catalogo_disponible
 from pokemon_clases import PokemonFuego, PokemonAgua, PokemonPlanta, PokemonElectrico
 
 def crear_pokemon(numero_seleccionado):
-    # Instanciación Dinámica: Extrae datos y llama al constructor [cite: 65, 68]
+    # Instanciación Dinámica: Extrae datos y llama al constructor
     datos = CATALOGO_POKEMON[numero_seleccionado]
     tipo = datos["tipo"]
     nombre = datos["nombre"]
@@ -17,7 +17,7 @@ def crear_pokemon(numero_seleccionado):
 
 def obtener_accion(jugador_nombre, es_computadora=False):
     if es_computadora:
-        return random.choice(["1", "2", "3"]) # Modo PvE usando random [cite: 40, 129]
+        return random.choice(["1", "2", "3"]) # Modo PvE usando random 
     
     while True:
         print(f"\n1. Atacar (15 EP) | 2. Defender (5 EP) | 3. Descansar (+20 EP)")
@@ -42,7 +42,7 @@ def batalla():
             p2_choice = input("Jugador 2, elija su Pokémon (número): ")
             p2 = crear_pokemon(p2_choice)
 
-        # Bucle de combate [cite: 121]
+        # Bucle de combate
         while p1.hp_actual > 0 and p2.hp_actual > 0:
             # Turno P1
             accion = obtener_accion(p1.nombre)
