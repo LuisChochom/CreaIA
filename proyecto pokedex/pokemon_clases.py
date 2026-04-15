@@ -3,7 +3,7 @@ import random
 class Pokemon:
     def __init__(self, nombre, hp_max, ep_max):
         self.nombre = nombre
-        # Encapsulamiento: Atributos privados [cite: 56]
+        # Encapsulamiento: Atributos privados
         self._hp_maximo = hp_max
         self._hp_actual = hp_max
         self._energia_maxima = ep_max
