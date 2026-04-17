@@ -1,0 +1,172 @@
+from abc import ABC, abstractmethod
+
+# ==========================================
+# BLOQUE 1: LA BASE DEL PERSONAL
+# ==========================================
+# Clase abstracta: no se puede instanciar [cite: 6]
+class PersonalMedico(ABC):
+    def __init__(self, nombre, especialidad):
+        self.nombre = nombre [cite: 7]
+        self.especialidad = especialidad [cite: 7]
+
+    @abstractmethod
+    def realizar_labor(self): [cite: 8]
+        pass
+
+class Doctor(PersonalMedico):
+    def realizar_labor(self):
+        # Imprime diagnóstico especializado [cite: 10]
+        print(f"[SISTEMA] El Dr. {self.nombre} está realizando un diagnóstico especializado.")
+
+    # BLOQUE 3: EL TRATAMIENTO (Inyección de Dependencias)
+    def atender_paciente(self, objeto_paciente): [cite: 23, 24]
+        self.realizar_labor()
+        
+        # Entrada de diagnóstico [cite: 25]
+        nota = input("Ingrese nota para el historial: ")
+        # Se guarda directamente en el historial del paciente [cite: 26]
+        objeto_paciente.historial.agregar_observacion(nota)
+
+        # Bucle para asegurar que la dosis sea numérica (Bloque 4) 
+        while True:
+            try:
+                dosis = float(input("Ingrese dosis de recuperación (1-50): ")) [cite: 27]
+                objeto_paciente.salud += dosis [cite: 28]
+                
+                # Validar que no pase de 100%
+                if objeto_paciente.salud > 100:
+                    objeto_paciente.salud = 100
+                
+                print(f"¡Tratamiento Exitoso! La salud de {objeto_paciente.nombre} ha subido a {objeto_paciente.salud}%.") [cite: 52]
+                break 
+            except ValueError:
+                print("[ERROR]: Solo se permiten valores numéricos para la dosis. Intente de nuevo.") [cite: 51]
+
+class Enfermero(PersonalMedico):
+    def realizar_labor(self):
+        # Imprime cuidados y signos vitales [cite: 11]
+        print(f"[SISTEMA] El enfermero/a {self.nombre} está aplicando cuidados y revisando signos vitales.")
+
+# ==========================================
+# BLOQUE 2: EL PACIENTE Y SU MEMORIA (Composición)
+# ==========================================
+class HistorialClinico:
+    def __init__(self):
+        self.observaciones = [] [cite: 13]
+
+    def agregar_observacion(self, texto): [cite: 14]
+        self.observaciones.append(texto)
+
+    # Versión sin usar .join()
+    def mostrar_notas(self): [cite: 14]
+        if not self.observaciones:
+            print("No hay notas registradas.")
+        else:
+            print("Notas del Historial:")
+            for nota in self.observaciones:
+                print(f"- {nota}")
+
+class Paciente:
+    def __init__(self, nombre, edad, salud_inicial):
+        self.nombre = nombre [cite: 16]
+        self.edad = edad [cite: 16]
+        self.salud = salud_inicial [cite: 18]
+        # Al nacer, fabrica su propio Historial (Composición) 
+        self.historial = HistorialClinico()
+
+    def obtener_estado_texto(self):
+        # Lógica de salud crítica [cite: 19]
+        if self.salud < 20:
+            return f"{self.salud}% [CRÍTICO]"
+        return f"{self.salud}%"
+
+# ==========================================
+# BLOQUE 4: LA GESTIÓN DEL HOSPITAL
+# ==========================================
+class Hospital:
+    def __init__(self):
+        # Listas para gestionar personal y pacientes [cite: 33]
+        self.lista_pacientes = []
+        self.lista_personal = []
+
+    def registrar_paciente(self): [cite: 35]
+        nombre = input("Nombre del paciente: ")
+        try:
+            edad = int(input("Edad: "))
+            salud = float(input("Salud inicial (0-100): "))
+            nuevo = Paciente(nombre, edad, salud)
+            self.lista_pacientes.append(nuevo)
+        except ValueError:
+            print("[ERROR] Entrada inválida. Use números para edad y salud.")
+
+    def contratar_personal(self): [cite: 36]
+        print("1. Doctor / 2. Enfermero")
+        tipo = input("Tipo: ")
+        nom = input("Nombre: ")
+        esp = input("Especialidad: ")
+        if tipo == "1":
+            self.lista_personal.append(Doctor(nom, esp))
+        else:
+            self.lista_personal.append(Enfermero(nom, esp))
+
+    def mostrar_reporte(self): [cite: 37]
+        print("\n" + "="*40)
+        print(f"{'PACIENTE':<15} | {'EDAD':<5} | {'ESTADO':<15}")
+        print("-" * 40)
+        for p in self.lista_pacientes:
+            print(f"{p.nombre:<15} | {p.edad:<5} | {p.obtener_estado_texto():<15}")
+        print("="*40)
+
+# ==========================================
+# MENÚ PRINCIPAL
+# ==========================================
+def menu_hospital():
+    mi_hospital = Hospital()
+    
+    # Datos de prueba rápidos
+    mi_hospital.lista_personal.append(Doctor("House", "Especialista"))
+    mi_hospital.lista_pacientes.append(Paciente("Rodrigo", 45, 15))
+
+    while True:
+        print("\n>>> SISTEMA HOSPITALARIO VIDA-SANA <<<<<<") [cite: 39]
+        print("1. Registrar Paciente\n2. Contratar Personal\n3. Realizar Consulta Médica\n4. Ver Reporte\n5. Salir") [cite: 40, 41, 42, 43, 44]
+        
+        try:
+            opcion = int(input("Seleccione una opción: ")) [cite: 45]
+            
+            if opcion == 1:
+                mi_hospital.registrar_paciente()
+            elif opcion == 2:
+                mi_hospital.contratar_personal()
+            elif opcion == 3:
+                # Mostrar Personal
+                print("\nPersonal Disponible") [cite: 46]
+                for i, pers in enumerate(mi_hospital.lista_personal):
+                    print(f"{i}. {pers.nombre} ({pers.especialidad})")
+                med_idx = int(input("Elija el médico: ")) [cite: 47]
+
+                # Mostrar Pacientes
+                print("\nPacientes en Espera") [cite: 48]
+                for i, pac in enumerate(mi_hospital.lista_pacientes):
+                    print(f"{i}. {pac.nombre} (Edad: {pac.edad} | Salud: {pac.obtener_estado_texto()})")
+                pac_idx = int(input("Elija el paciente: ")) [cite: 49]
+
+                # Ejecutar atención
+                doctor = mi_hospital.lista_personal[med_idx]
+                paciente = mi_hospital.lista_pacientes[pac_idx]
+                
+                if isinstance(doctor, Doctor):
+                    doctor.atender_paciente(paciente)
+                else:
+                    doctor.realizar_labor()
+                    
+            elif opcion == 4:
+                mi_hospital.mostrar_reporte()
+            elif opcion == 5:
+                print("Saliendo del sistema...")
+                break
+        except (ValueError, IndexError):
+            print("[ERROR]: Selección inválida o dato no numérico.")
+
+if __name__ == "__main__":
+    menu_hospital()
