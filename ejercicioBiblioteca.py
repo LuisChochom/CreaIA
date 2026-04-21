@@ -29,6 +29,7 @@ class Libro:
     def marcar_como_prestado(self):
         self._prestado = True
 
+#--- modelo ---
 class Biblioteca:
     def __init__(self):
         self._libros = []
@@ -46,7 +47,7 @@ class Biblioteca:
                 return libro
         return None
     
-
+#--- vista ---
 class VistaBiblioteca:
     def mostrar_menu(self):
         print("\n--- SISTEMA DE BIBLIOTECA ---")
@@ -75,7 +76,7 @@ class VistaBiblioteca:
     def mostrar_mensaje(self, mensaje):
         print(f">> {mensaje}")
 
-    
+#--- controlador ---    
 class ControladorBiblioteca:
     def __init__(self, modelo_biblioteca, vista):
         self.modelo = modelo_biblioteca
